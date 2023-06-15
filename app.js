@@ -48,7 +48,6 @@ function attackBoss() {
     boss.level++
     totalGold += boss.reward
     checkLevel("", false)
-    console.log('Mr. Legs gets bigger')
   }
 
   drawHealth()
@@ -92,7 +91,8 @@ function endGame() {
     }
   })
   if (killedHeroes == heroes.length) {
-    // window.alert('game over')
+    window.alert('game over')
+    resetGame()
   }
 }
 
@@ -101,15 +101,14 @@ function buyPotion(heroName) {
   if (totalGold >= 20) {
     totalGold -= 20
     foundHero.health += 10
-    console.log(gold)
   }
   drawHealth()
 }
 
 function levelUp(heroName) {
   let foundHero = heroes.find(hero => hero.type == heroName)
-  if (totalGold >= 100) {
-    totalGold -= 100
+  if (totalGold >= 50) {
+    totalGold -= 50
     foundHero.level++
     checkLevel(foundHero, false)
   }
@@ -132,19 +131,18 @@ function checkLevel(hero, isReset) {
     boss.maxHealth = boss.originalHealth
     boss.reward = boss.originalReward
     boss.damage = boss.originalDamage
+    totalGold = 20
   } else {
     hero.maxHealth = hero.maxHealth * hero.level
     hero.damage = hero.damage * hero.level
-    boss.maxHealth = boss.maxHealth * boss.level
-    boss.reward = boss.reward * boss.level
-    boss.damage = boss.damage * boss.level
+    boss.maxHealth = boss.maxHealth + (boss.level * 10)
+    boss.reward = boss.reward * (boss.level * .5)
+    boss.damage = boss.damage + (boss.level * 0.25)
   }
   hero.health = hero.maxHealth
   boss.health = boss.maxHealth
   boss.defeatedCount = boss.level - 1
-  totalGold = 20
-  console.log(boss);
 }
 
 drawHealth()
-setInterval(bossAttack, 500)
+setInterval(bossAttack, 1000)
