@@ -98,7 +98,7 @@ function endGame() {
 
 function buyPotion(heroName) {
   let foundHero = heroes.find(hero => hero.type == heroName)
-  if (totalGold >= 20) {
+  if (totalGold >= 20 && foundHero.isAlive) {
     totalGold -= 20
     foundHero.health += 10
   }
@@ -107,7 +107,7 @@ function buyPotion(heroName) {
 
 function levelUp(heroName) {
   let foundHero = heroes.find(hero => hero.type == heroName)
-  if (totalGold >= 50) {
+  if (totalGold >= 50 && foundHero.isAlive) {
     totalGold -= 50
     foundHero.level++
     checkLevel(foundHero, false)
