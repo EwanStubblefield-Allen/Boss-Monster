@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="container-fluid">
+    <section class="row p-3 justify-content-around">
+      <div class="col-5 d-flex justify-content-center">
+        <div class="card hero-card" style="width: 18rem;">
+          <img class="card-img-top hero-img"
+            src="https://images.unsplash.com/photo-1558335101-cf872fa02538?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHdhcmZ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+            alt="dwarf">
+          <div class="card-body">
+            <h5 class="card-title">Slate Slabrock</h5>
+            <div class="d-flex justify-content-between">
+              <p class="card-text">Health: <span id="dwarfHealth">100</span></p>
+              <p class="card-text">Level: <span id="leveldwarf">1</span></p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button onclick="levelUp('dwarf')" class="btn btn-success">Level Up</button>
+              <button onclick="buyPotion('dwarf')" class="btn btn-success">Buy Potion</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-5 d-flex justify-content-center">
+        <div class="card hero-card" style="width: 18rem;">
+          <img class="card-img-top hero-img"
+            src="https://images.unsplash.com/photo-1604868379657-dd7c35f6c4cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+            alt="elf">
+          <div class="card-body">
+            <h5 class="card-title">Flint Ironstag</h5>
+            <div class="d-flex justify-content-between">
+              <p class="card-text">Health: <span id="elfHealth">50</span></p>
+              <p class="card-text">Level: <span id="levelelf">1</span></p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <button onclick="levelUp('elf')" class="btn btn-success">Level Up</button>
+              <button onclick="buyPotion('elf')" class="btn btn-success">Buy Potion</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="container-fluid">
+    <section class="row">
+      <div class="col-12 d-flex flex-column align-items-center p-3">
+        <div class="card hero-card" style="width: 18rem;">
+          <div id="healthBar" class="progress">
+
+          </div>
+          <img onclick="attackBoss()" class="card-img-top"
+            src="https://images.unsplash.com/photo-1532802245604-c567f1acd48e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3BpZGVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+            alt="spider">
+          <div class="card-body px-3 py-0">
+            <h5 class="card-title">Mr. Legs</h5>
+            <div class="d-flex justify-content-between">
+              <p class="card-text">Health: <span id="bossHealth">100</span></p>
+              <p class="card-text">Level: <span id="bossLevel">1</span></p>
+            </div>
+          </div>
+        </div>
+        <p class="text-white">Monsters Defeated: <span id="monstersDefeated">0</span></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container-fluid">
+    <section class="row justify-content-around align-items-center p-3">
+      <div class="col-4">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <p class="card-text fs-4">Gold: <span id="gold">0</span></p>
+            <div class="d-flex justify-content-between">
+              <p class="card-text">Buy Potion:</p>
+              <p>20G</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 d-flex justify-content-end">
+        <button onclick="resetGame()" class="btn btn-danger">RESET</button>
+      </div>
+    </section>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+body {
+  background-image: url(https://images.unsplash.com/photo-1604149370100-2cf3be3bc845?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3BpZGVyJTIwd2VifGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-card {
+  height: fit-content;
+}
+
+.hero-img {
+  height: 20vh;
+  object-fit: cover;
+}
