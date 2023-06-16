@@ -5,6 +5,10 @@ body {
   background-position: center;
 }
 
+p {
+  margin: 0;
+}
+
 .hero-card {
   height: fit-content;
 }

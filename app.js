@@ -1,3 +1,9 @@
+const bossHealth = document.getElementById('healthBar')
+const bossLevel = document.getElementById('bossLevel')
+const bossDefeated = document.getElementById('monstersDefeated')
+const gold = document.getElementById('gold')
+const levelCost = document.getElementById('levelCost')
+
 const heroes = [
   {
     name: 'Slate Slabrock',
@@ -36,6 +42,7 @@ const boss = {
 }
 
 let totalGold = 20
+let levelUpCost = 50
 
 function attackBoss() {
   heroes.forEach(hero => {
@@ -61,14 +68,10 @@ function drawHealth() {
     heroHealth.innerText = hero.health
   });
 
-  let bossHealth = document.getElementById('healthBar')
-  let bossLevel = document.getElementById('bossLevel')
-  let bossDefeated = document.getElementById('monstersDefeated')
-  let gold = document.getElementById('gold')
-
   bossDefeated.innerText = boss.defeatedCount
   bossLevel.innerText = boss.level
   gold.innerText = totalGold
+  levelCost.innerText = levelUpCost
   bossHealth.innerHTML = `
     <div class="progress-bar bg-danger" role = "progressbar" aria - valuenow="70" aria - valuemin="0"
   aria - valuemax="100" style = "width:${boss.health / boss.maxHealth * 100}%" >
@@ -91,7 +94,7 @@ function endGame() {
     }
   })
   if (killedHeroes == heroes.length) {
-    window.alert('game over')
+    window.alert('Game Over!')
     resetGame()
   }
 }
@@ -107,9 +110,10 @@ function buyPotion(heroName) {
 
 function levelUp(heroName) {
   let foundHero = heroes.find(hero => hero.type == heroName)
-  if (totalGold >= 50 && foundHero.isAlive) {
-    totalGold -= 50
+  if (totalGold >= levelUpCost && foundHero.isAlive) {
+    totalGold -= levelUpCost
     foundHero.level++
+    levelUpCost += foundHero.level * 20
     checkLevel(foundHero, false)
   }
   drawHealth()
@@ -133,15 +137,16 @@ function checkLevel(hero, isReset) {
     boss.damage = boss.originalDamage
     totalGold = 20
   } else {
-    hero.maxHealth = hero.maxHealth * hero.level
+    hero.maxHealth = hero.maxHealth + (hero.level * 30)
     hero.damage = hero.damage * hero.level
     boss.maxHealth = boss.maxHealth + (boss.level * 10)
-    boss.reward = boss.reward * (boss.level * .5)
+    boss.reward = boss.reward + (boss.level * 2)
     boss.damage = boss.damage + (boss.level * 0.25)
   }
   hero.health = hero.maxHealth
   boss.health = boss.maxHealth
   boss.defeatedCount = boss.level - 1
+  levelUpCost = 50
 }
 
 drawHealth()
